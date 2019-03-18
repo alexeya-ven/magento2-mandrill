@@ -2,7 +2,6 @@
 namespace Ebizmarts\Mandrill\Model;
 
 use Magento\Framework\Mail\Template\TransportBuilder;
-use Magento\Framework\Mail\Template\TransportBuilderByStore;
 use Magento\Sales\Model\Order\Email\Container\IdentityInterface;
 use Magento\Sales\Model\Order\Email\Container\Template;
 use Magento\Framework\Mail\MessageInterface;
@@ -38,12 +37,7 @@ class SenderBuilder extends \Magento\Sales\Model\Order\Email\SenderBuilder
             TransportBuilder::class,
             ["message" => $message]
         );
-        /** @var TransportBuilderByStore $transportBuilderByStore */
-        $transportBuilderByStore = $objectManager->create(
-            TransportBuilderByStore::class,
-            ["message" => $message]
-        );
-        parent::__construct($templateContainer, $identityContainer, $transportBuilder, $transportBuilderByStore);
+        parent::__construct($templateContainer, $identityContainer, $transportBuilder);
         $this->senderResolver = $senderResolver;
     }
     protected function configureEmailTemplate()
