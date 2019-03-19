@@ -25,7 +25,7 @@ class Test extends \Magento\Backend\App\Action
     protected $_helper;
 
     /** @var StoreManagerInterface */
-    public $storeManager;
+    private $storeManager;
 
     /**
      * Test constructor.
